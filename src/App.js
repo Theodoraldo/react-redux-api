@@ -1,8 +1,10 @@
+import React from 'react';
+import UserDisplay from './components/UserDisplay';
 import './App.css';
 
 function App() {
   return (
-    <h1>Hello boo !</h1>
+    <UserDisplay />
   );
 }
 
