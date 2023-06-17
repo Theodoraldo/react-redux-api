@@ -1,14 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-export const fetchRandomUser = createAsyncThunk('users/fetchRandomUser', async () => {
-  try {
-    const response = await fetch('https://randomuser.me/api/?results=5');
-    const data = await response.json();
-    console.log(data.results)
-  } catch (error) {
-    throw Error(error);
+const URL = 'https://randomuser.me/api/?results=5';
+
+export const fetchRandomUser = createAsyncThunk(
+  'users/fetchRandomUser',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios(URL);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        'An error has occurred while getting data'
+      );
+    }
   }
-})
+);
 
 const usersSlice = createSlice({
   name: 'users',
@@ -32,6 +39,7 @@ const usersSlice = createSlice({
     [fetchRandomUser.rejected]: (state, action) => {
       state.error = action.error.message;
       state.isLoading = false;
+      state.error = true;
     }
   },
 });
