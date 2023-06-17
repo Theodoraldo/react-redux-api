@@ -37,7 +37,6 @@ const usersSlice = createSlice({
       state.isLoading = false;
     },
     [fetchRandomUser.rejected]: (state, action) => {
-      state.error = action.error.message;
       state.isLoading = false;
       state.error = true;
     }
