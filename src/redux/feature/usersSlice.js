@@ -7,7 +7,7 @@ export const fetchRandomUser = createAsyncThunk(
   'users/fetchRandomUser',
   async (_, thunkAPI) => {
     try {
-      const response = await axios(URL);
+      const response = await axios.get(URL);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -17,29 +17,29 @@ export const fetchRandomUser = createAsyncThunk(
   }
 );
 
+
 const usersSlice = createSlice({
   name: 'users',
   initialState: {
-    users: [],
+    users: {},
     isLoading: false,
     error: null,
   },
-  reducers: {
-
-  },
+  reducers: {},
   extraReducers: {
-    [fetchRandomUser.pending]: (state, action) => {
+    [fetchRandomUser.pending]: (state) => {
       state.isLoading = true;
-      state.error = null;
     },
+
     [fetchRandomUser.fulfilled]: (state, action) => {
-      state.users = action.payload;
       state.isLoading = false;
+      state.users.usersS = action.payload;
     },
-    [fetchRandomUser.rejected]: (state, action) => {
+
+    [fetchRandomUser.rejected]: (state) => {
       state.isLoading = false;
       state.error = true;
-    }
+    },
   },
 });
 
