@@ -9,7 +9,7 @@ const UserDisplay = () => {
 
   useEffect(() => {
     dispatch(fetchRandomUser());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
@@ -17,13 +17,14 @@ const UserDisplay = () => {
       {isLoading && <div>Loading ........</div>}
       {error && <div>Ooops something happened whiles fetching </div>}
       {!isLoading
-        && Object.entries(users.results).map(([id, user]) => {
-          <div key={id}>
-            <p>
-              {user.name.first} {user.name.last}
-            </p>
-          </div>
-        })
+        &&
+        <div>
+          {users.map(user => (
+            <div key={user.login.uuid}>
+              <span>`{user.name.first}  {user.name.last}`</span>
+            </div>
+          ))}
+        </div>
       }
     </div>
   );
