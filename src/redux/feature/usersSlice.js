@@ -7,15 +7,14 @@ export const fetchRandomUser = createAsyncThunk(
   'users/fetchRandomUser',
   async () => {
     const response = await axios.get(URL);
-    console.log(response.data);
-    return response.data;
+    return response.data.results;
   }
 );
 
 const usersSlice = createSlice({
   name: 'users',
   initialState: {
-    users: {},
+    users: [],
     isLoading: false,
     error: null,
   },
