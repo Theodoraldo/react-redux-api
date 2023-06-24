@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchRandomUser } from '../redux/feature/usersSlice';
-
+import '../components/UserDisplay.css';
 
 const UserDisplay = () => {
   const dispatch = useDispatch();
@@ -12,16 +12,16 @@ const UserDisplay = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="container">
       <h1>List of Users</h1>
-      {isLoading && <div>Loading ........</div>}
+      {isLoading && <div className="load">Loading ........</div>}
       {error && <div>Ooops something happened whiles fetching </div>}
       {!isLoading
         &&
-        <div>
+        <div className="user">
           {users.map(user => (
             <div key={user.login.uuid}>
-              <span>`{user.name.first}  {user.name.last}`</span>
+              <span>{user.name.first}  {user.name.last}</span>
             </div>
           ))}
         </div>

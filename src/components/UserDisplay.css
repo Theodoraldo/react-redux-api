@@ -1,0 +1,14 @@
+.container {
+  color: white;
+  width: 50%;
+  margin: 100px auto;
+}
+
+.user {
+  font-size: 18px;
+}
+
+.load {
+  font-style: italic;
+  font-size: 18px;
+}
