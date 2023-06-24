@@ -16,13 +16,15 @@ const UserDisplay = () => {
       <h1>List of Users</h1>
       {isLoading && <div>Loading ........</div>}
       {error && <div>Ooops something happened whiles fetching </div>}
-      {users.results.map((user, index) => (
-        <div key={index}>
-          <p>
-            {user.name.first} {user.name.last}
-          </p>
-        </div>
-      ))}
+      {!isLoading
+        && Object.entries(users.results).map(([id, user]) => {
+          <div key={id}>
+            <p>
+              {user.name.first} {user.name.last}
+            </p>
+          </div>
+        })
+      }
     </div>
   );
 };
