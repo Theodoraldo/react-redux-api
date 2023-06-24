@@ -5,18 +5,12 @@ const URL = 'https://randomuser.me/api/?results=5';
 
 export const fetchRandomUser = createAsyncThunk(
   'users/fetchRandomUser',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get(URL);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(
-        'An error has occurred while getting data'
-      );
-    }
+  async () => {
+    const response = await axios.get(URL);
+    console.log(response.data);
+    return response.data;
   }
 );
-
 
 const usersSlice = createSlice({
   name: 'users',
@@ -33,7 +27,7 @@ const usersSlice = createSlice({
 
     [fetchRandomUser.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.users.usersS = action.payload;
+      state.users = action.payload;
     },
 
     [fetchRandomUser.rejected]: (state) => {
