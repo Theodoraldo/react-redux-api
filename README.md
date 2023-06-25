@@ -116,12 +116,12 @@ To run the project, execute the following command:
 
 To run tests, run the following command:
 
-- npm start
+- npm run test
 
 ### Deployment
 
 You can deploy this project using:
--Github pages
+-randers
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,13 +175,13 @@ I would like to thank everyone who contributed to the organisation of this codeb
 
 ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
 
-- **[I cannot clone your project to my local machine ?]**
+- **I cannot clone your project to my local machine ?**
 
-  - [Please check whether you have or properly installed node.]
+  - Please check whether you have or properly installed node.
 
-- **[The project cannot be displayed in the browser ?]**
+- **The project cannot be displayed in the browser ?**
 
-  - [Please run the command npm start in your terminal and make sure that you are in the application folder.]
+  - Please run the command npm start in your terminal and make sure that you are in the application folder.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
